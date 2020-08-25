@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.jvl.assignment.model.entities.Restaurant
 
 /**
@@ -20,6 +21,9 @@ interface RestaurantDao {
     @Insert
     fun insert(restaurant: Restaurant)
 
-    @Query("SELECT * FROM Restaurant")
-    fun retrieveAll(): LiveData<List<Restaurant>>
+    @Update
+    suspend fun update(restaurant: Restaurant)
+
+    @Query("SELECT * FROM Restaurant WHERE name LIKE :search || '%'")
+    fun retrieveAll(search: String): LiveData<List<Restaurant>>
 }

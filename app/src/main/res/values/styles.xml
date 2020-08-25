@@ -5,6 +5,14 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
     </style>
 
+    <style name="CardViewStyling" parent="CardView">
+        <item name="title">@color/colorPrimary</item>
+        <item name="cardCornerRadius">4dp</item>
+        <item name="cardUseCompatPadding">true</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    
 </resources>

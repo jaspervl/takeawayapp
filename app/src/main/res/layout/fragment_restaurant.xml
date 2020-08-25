@@ -15,6 +15,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:layout_editor_absoluteX="0dp" />
 
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/restaurantList"
             android:name="com.jvl.assignment.RestaurantFragment"
