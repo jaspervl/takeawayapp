@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">assignment</string>
+    <string name="minimum_cost">Minimum cost</string>
+    <string name="delivery_cost">Delivery cost</string>
+    <string name="average_price">Average price</string>
+    <string name="popularity">Popularity</string>
+    <string name="distance">Distance</string>
+    <string name="rating">Rating</string>
+    <string name="newest">Newest</string>
+    <string name="best_match">Best match</string>
 </resources>

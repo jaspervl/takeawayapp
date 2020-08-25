@@ -3,29 +3,119 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+
+        <import type="com.jvl.assignment.utility.Metric" />
+
+        <variable
+            name="viewmodel"
+            type="com.jvl.assignment.viewmodels.RestaurantViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        app:layout_constrainedHeight="true"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constrainedHeight="true">
 
         <SearchView
             android:id="@+id/edit_query"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:layout_editor_absoluteX="0dp" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
+        <HorizontalScrollView
+            android:id="@+id/chipGroupContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:requiresFadingEdge="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_query">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/filterGroup"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:chipSpacing="8dp"
+                app:singleLine="true"
+                app:selectionRequired="true"
+                app:checkedChip="@id/filterBestMatch"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterBestMatch"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/best_match" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterNewest"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/newest" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterRatingAverage"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/rating" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterDistance"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/distance" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterPopularity"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/popularity" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterAverageProductPrice"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/average_price" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterDeliveryCost"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/delivery_cost" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/filterMinCost"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/minimum_cost" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+        </HorizontalScrollView>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/restaurantList"
             android:name="com.jvl.assignment.RestaurantFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="LinearLayoutManager"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_query"
+            app:layout_constraintTop_toBottomOf="@+id/chipGroupContainer"
             tools:context=".views.RestaurantFragment"
             tools:listitem="@layout/fragment_restaurant_item" />
 

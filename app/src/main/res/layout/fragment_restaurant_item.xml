@@ -10,11 +10,12 @@
             type="com.jvl.assignment.model.entities.Restaurant" />
     </data>
 
-    <androidx.cardview.widget.CardView
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:cardCornerRadius="4dp"
+        app:cardUseCompatPadding="true"
         tools:layout_height="150dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -30,6 +31,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="28dp"
                 android:text="@{restaurant.name}"
+                android:textAppearance="?attr/textAppearanceHeadline6"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Title" />
@@ -44,6 +46,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/title"
                 app:layout_constraintVertical_bias="0.136"
+                android:textAppearance="?attr/textAppearanceBody2"
+                android:textColor="?android:attr/textColorSecondary"
                 tools:text="Status" />
 
             <CheckBox
@@ -62,6 +66,6 @@
 
 
 
-    </androidx.cardview.widget.CardView>
+    </com.google.android.material.card.MaterialCardView>
 
 </layout>

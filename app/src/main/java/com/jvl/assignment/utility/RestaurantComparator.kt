@@ -39,15 +39,16 @@ class RestaurantComparator(private val activeMetric: LiveData<Metric>) : Compara
     }
 
     // FIXME Seems a bit lengthy and a lot of repetition, should rethink this
+    // Certain values are inverted to their negative for the comparison to make sense (min values)
     private fun checkMetric(val1: SortingValues, val2: SortingValues) = when (activeMetric.value) {
         Metric.BEST_MATCH -> val1.bestMatch.compareTo(val2.bestMatch)
-        Metric.NEWEST -> val1.newest.compareTo(val2.newest)
+        Metric.NEWEST -> val1.newest.compareTo(val2.newest) * -1
         Metric.RATING_AVERAGE -> val1.ratingAverage.compareTo(val2.ratingAverage)
-        Metric.DISTANCE -> val1.distance.compareTo(val2.distance)
+        Metric.DISTANCE -> val1.distance.compareTo(val2.distance) * -1
         Metric.POPULARITY -> val1.popularity.compareTo(val2.popularity)
-        Metric.AVERAGE_PRODUCT_PRICE -> val1.averageProductPrice.compareTo(val2.averageProductPrice)
-        Metric.DELIVERY_COST -> val1.deliveryCosts.compareTo(val2.deliveryCosts)
-        Metric.MIN_COST -> val1.minCost.compareTo(val2.minCost)
+        Metric.AVERAGE_PRODUCT_PRICE -> val1.averageProductPrice.compareTo(val2.averageProductPrice) * -1
+        Metric.DELIVERY_COST -> val1.deliveryCosts.compareTo(val2.deliveryCosts) * -1
+        Metric.MIN_COST -> val1.minCost.compareTo(val2.minCost) * -1
         else -> 0 // No metric active
     }
 

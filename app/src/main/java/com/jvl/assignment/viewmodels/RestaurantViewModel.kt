@@ -1,6 +1,7 @@
 package com.jvl.assignment.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.jvl.assignment.model.RestaurantRepository
 import com.jvl.assignment.model.entities.Restaurant
@@ -17,7 +18,7 @@ class RestaurantViewModel(context: Application) : AndroidViewModel(context) {
     var query = MutableLiveData<String>("")
 
     // Original live data and the mediator livedata from the DAO, initially we don't care about the specific quarry
-    private val filteredData = Transformations.switchMap(query){ repository.getRestaurants(it) }
+    private val filteredData = Transformations.switchMap(query) { repository.getRestaurants(it) }
     val restaurants = MediatorLiveData<List<Restaurant>>()
 
     // Currently selected metric to filter & the comparator for sorting
@@ -25,17 +26,27 @@ class RestaurantViewModel(context: Application) : AndroidViewModel(context) {
     private val comparator = RestaurantComparator(metric)
 
     init {
-        restaurants.addSource(filteredData) {
-            viewModelScope.launch {
+        // Listen to changes in the filtered data
+        restaurants.addSource(filteredData) { sortData(it) }
+
+        // Listen to metric being changed
+        restaurants.addSource(metric) {
+            restaurants.value?.also {
                 sortData(it)
             }
         }
     }
 
+    fun setMetric(met: Metric) {
+        if (metric.value != met) metric.value = met
+    }
+
     // Sorts the list in a different thread
-    private suspend fun sortData(list: List<Restaurant>) =
-        withContext(Dispatchers.IO) {
-            restaurants.postValue(list.sortedWith(comparator).reversed())
+    private fun sortData(list: List<Restaurant>) =
+        viewModelScope.launch {
+            withContext(Dispatchers.IO) {
+                restaurants.postValue(list.sortedWith(comparator).reversed())
+            }
         }
 
     fun toggleFavorite(item: Restaurant) {
