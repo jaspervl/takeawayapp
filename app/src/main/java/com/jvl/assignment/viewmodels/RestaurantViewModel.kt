@@ -17,7 +17,8 @@ class RestaurantViewModel(context: Application) : AndroidViewModel(context) {
     // Query for filtering
     var query = MutableLiveData<String>("")
 
-    // Original live data and the mediator livedata from the DAO, initially we don't care about the specific quarry
+    var liveD = repository.getRestaurants("")
+    // Original live data and the mediator livedata from the DAO
     private val filteredData = Transformations.switchMap(query) { repository.getRestaurants(it) }
     val restaurants = MediatorLiveData<List<Restaurant>>()
 
@@ -36,6 +37,7 @@ class RestaurantViewModel(context: Application) : AndroidViewModel(context) {
             }
         }
     }
+
 
     fun setMetric(met: Metric) {
         if (metric.value != met) metric.value = met

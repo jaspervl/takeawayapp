@@ -24,6 +24,6 @@ interface RestaurantDao {
     @Update
     suspend fun update(restaurant: Restaurant)
 
-    @Query("SELECT * FROM Restaurant WHERE name LIKE :search || '%'")
+    @Query("SELECT * FROM Restaurant WHERE name LIKE '%'|| :search || '%'")
     fun retrieveAll(search: String): LiveData<List<Restaurant>>
 }

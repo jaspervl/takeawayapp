@@ -59,7 +59,6 @@ class RestaurantFragment : Fragment() {
                 restaurantViewModel.query.value = p0
                 return false
             }
-
         })
 
         // Selection of the right metric depending on the clicked id

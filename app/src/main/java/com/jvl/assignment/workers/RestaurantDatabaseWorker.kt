@@ -24,7 +24,6 @@ class RestaurantDatabaseWorker (context:Context, params: WorkerParameters): Coro
                 applicationContext.assets.open(DATA_FILENAME).use { inputStream ->
                     JsonReader(inputStream.reader()).use { jsonReader ->
                         val holder = Gson().fromJson<RestaurantHolder>(jsonReader, RestaurantHolder::class.java)
-                        Log.d(LOGGING_TAG, "Values: $holder)}")
                         RestaurantDatabase
                             .getInstance(applicationContext)
                             .restaurantDao()
@@ -33,12 +32,13 @@ class RestaurantDatabaseWorker (context:Context, params: WorkerParameters): Coro
                     }
                 }
             } catch (ex: Exception) {
-                Log.e(LOGGING_TAG, "Error loading dummy data", ex)
+                Log.e(LOGGING_TAG, "Couldn't populate database $ex")
                 Result.failure()
             }
         }
     }
 
+    // Needed due to the json format
     data class RestaurantHolder(
         val restaurants: List<Restaurant>
     )
