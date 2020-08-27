@@ -1,10 +1,7 @@
 package com.jvl.assignment.model
 
-import android.app.Application
 import android.content.Context
 import androidx.lifecycle.LiveData
-import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.jvl.assignment.model.entities.Restaurant
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

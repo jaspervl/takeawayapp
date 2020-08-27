@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.ListAdapter
 import com.jvl.assignment.databinding.FragmentRestaurantItemBinding
 
 import com.jvl.assignment.model.entities.Restaurant
+import com.jvl.assignment.model.entities.SortingValues
 import com.jvl.assignment.viewmodels.RestaurantViewModel
 
 /**

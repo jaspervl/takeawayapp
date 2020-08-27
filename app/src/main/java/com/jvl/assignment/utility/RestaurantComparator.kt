@@ -14,15 +14,25 @@ import com.jvl.assignment.model.entities.SortingValues
 class RestaurantComparator(private val activeMetric: LiveData<Metric>) : Comparator<Restaurant> {
 
     override fun compare(res1: Restaurant, res2: Restaurant) =
+        // First check the favorites
         checkFavorites(res1, res2).also { favoriteResult ->
+            // If
             return if (favoriteResult != 0) favoriteResult else checkStates(
                 statusMapping[res1.status]!!,
                 statusMapping[res2.status]!!
             ).also { statusResult ->
-                return if (statusResult != 0) statusResult else
-                    checkMetric(res1.sortingValues, res2.sortingValues)
+                return if (statusResult != 0) statusResult else checkMetric(
+                    res1.sortingValues,
+                    res2.sortingValues
+                ).also { metricResult ->
+                    return if (metricResult != 0) metricResult else checkAlphabetically(
+                        res1.name,
+                        res2.name
+                    )
+                }
             }
         }
+
 
     // Check the favorites
     private fun checkFavorites(res1: Restaurant, res2: Restaurant) = when {
@@ -52,8 +62,11 @@ class RestaurantComparator(private val activeMetric: LiveData<Metric>) : Compara
         else -> 0 // No metric active
     }
 
+    // Necessary to keep order consistent
+    private fun checkAlphabetically(name1: String, name2: String) = name1.compareTo(name2)
+
     companion object {
-        // Using a static hashmap to
+        // Mapping of status, giving a higher value to the open value
         private val statusMapping = hashMapOf("open" to 3, "order ahead" to 2, "closed" to 1)
     }
 }

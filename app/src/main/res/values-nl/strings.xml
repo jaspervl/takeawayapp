@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Opdracht</string>
+    <string name="minimum_cost">Laagste prijs</string>
+    <string name="delivery_cost">Bezorgkosten</string>
+    <string name="popularity">Populariteit</string>
+    <string name="average_price">Gemiddelde prijs</string>
+    <string name="distance">Afstand</string>
+    <string name="rating">Score</string>
+    <string name="newest">Nieuw</string>
+    <string name="best_match">Beste match</string>
+    <string name="reset">Reset</string>
+    <string name="no_results">Geen restauranten gevonden</string>
+</resources>

@@ -10,6 +10,8 @@ import com.google.gson.reflect.TypeToken
 import com.google.gson.stream.JsonReader
 import com.jvl.assignment.model.RestaurantDatabase
 import com.jvl.assignment.model.entities.Restaurant
+import com.jvl.assignment.utility.DATA_FILENAME
+import com.jvl.assignment.utility.RestaurantHolder
 import kotlinx.coroutines.coroutineScope
 
 /**
@@ -28,6 +30,7 @@ class RestaurantDatabaseWorker (context:Context, params: WorkerParameters): Coro
                             .getInstance(applicationContext)
                             .restaurantDao()
                             .insertAll(holder.restaurants)
+                        Log.e(LOGGING_TAG, "Inserted")
                         Result.success()
                     }
                 }
@@ -38,13 +41,7 @@ class RestaurantDatabaseWorker (context:Context, params: WorkerParameters): Coro
         }
     }
 
-    // Needed due to the json format
-    data class RestaurantHolder(
-        val restaurants: List<Restaurant>
-    )
     companion object {
-        // For now I just declared the constant locally without making a util class or the sorts for it.
-        private const val DATA_FILENAME = "restaurant-data.json"
-        private const val LOGGING_TAG = "Res-data-worker"
+        private const val LOGGING_TAG = "RESTAURANT_WORKER"
     }
 }
