@@ -9,14 +9,12 @@ import com.jvl.assignment.model.entities.SortingValues
  * - Favorite
  * - Opening state (OPEN,ORDER,CLOSED)
  * - Sorting options
- * @author Jaspervl
+ * - Alphabetically (This ensures the resulting list will be ordered properly)
  */
 class RestaurantComparator(private val activeMetric: LiveData<Metric>) : Comparator<Restaurant> {
 
     override fun compare(res1: Restaurant, res2: Restaurant) =
-        // First check the favorites
         checkFavorites(res1, res2).also { favoriteResult ->
-            // If
             return if (favoriteResult != 0) favoriteResult else checkStates(
                 statusMapping[res1.status]!!,
                 statusMapping[res2.status]!!
@@ -48,7 +46,7 @@ class RestaurantComparator(private val activeMetric: LiveData<Metric>) : Compara
         else -> -1
     }
 
-    // FIXME Seems a bit lengthy and a lot of repetition, should rethink this
+    // FIXME Seems a bit lengthy and a lot of repetition, maybe metrics can be handled at the database layer
     // Certain values are inverted to their negative for the comparison to make sense (min values)
     private fun checkMetric(val1: SortingValues, val2: SortingValues) = when (activeMetric.value) {
         Metric.BEST_MATCH -> val1.bestMatch.compareTo(val2.bestMatch)

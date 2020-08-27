@@ -9,7 +9,6 @@ import kotlinx.coroutines.withContext
 /**
  * Even though the only data source currently in the application, it is still handy to have this
  * abstraction layer if in the future new sources will be added (Like an API datasource with retrofit)
- * @author Jaspervl
  */
 class RestaurantRepository(context: Context) {
     // Only the dao for restaurant items is necessary for now

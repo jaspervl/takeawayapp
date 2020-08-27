@@ -15,7 +15,6 @@ import com.jvl.assignment.workers.RestaurantDatabaseWorker
 
 /**
  * The database consisting of the restaurant data with the corresponding sorting values
- * @author Jaspervl
  */
 @Database(entities = [Restaurant::class], version = 1, exportSchema = false)
 abstract class RestaurantDatabase : RoomDatabase() {

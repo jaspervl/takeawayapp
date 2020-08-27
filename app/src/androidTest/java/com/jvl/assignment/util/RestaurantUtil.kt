@@ -8,7 +8,6 @@ import kotlin.random.Random as ran
 
 /**
  * Util to generate dummy restaurants using UUID class in order to avoid duplicates
- * @author Jaspervl
  */
 class RestaurantUtil {
 

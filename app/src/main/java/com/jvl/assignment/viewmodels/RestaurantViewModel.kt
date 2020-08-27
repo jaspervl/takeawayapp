@@ -12,9 +12,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+/**
+ * The viewmodel which contains most of the state of our application
+ */
 class RestaurantViewModel(context: Application) : AndroidViewModel(context) {
     private val repository = RestaurantRepository(context)
 
+    // TODO ViewModel can still be destroyed, query could be saved in SavedState instead
     // Query for filtering
     var query = MutableLiveData<String>("")
 
@@ -40,10 +44,6 @@ class RestaurantViewModel(context: Application) : AndroidViewModel(context) {
 
     fun setMetric(met: Metric) {
         if (metric.value != met) metric.value = met
-    }
-
-    fun getMetric(): LiveData<Metric>{
-        return metric
     }
 
     // Sorts the list asynchronously and update the livedata

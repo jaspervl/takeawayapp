@@ -16,7 +16,6 @@ import kotlinx.coroutines.coroutineScope
 
 /**
  * Responsible for the reading the test data and populating the database with it
- * @author Jaspervl
  */
 class RestaurantDatabaseWorker (context:Context, params: WorkerParameters): CoroutineWorker(context, params){
 
@@ -30,7 +29,6 @@ class RestaurantDatabaseWorker (context:Context, params: WorkerParameters): Coro
                             .getInstance(applicationContext)
                             .restaurantDao()
                             .insertAll(holder.restaurants)
-                        Log.e(LOGGING_TAG, "Inserted")
                         Result.success()
                     }
                 }

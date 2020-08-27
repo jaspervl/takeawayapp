@@ -19,7 +19,6 @@ import org.junit.Assert.assertTrue
  * - Test went successful
  * - Database is filled with more then 1 entry of restaurants
  * - ..
- * @author Jaspervl
  */
 @RunWith(AndroidJUnit4::class)
 class SortingTest {

@@ -2,7 +2,6 @@ package com.jvl.assignment.model.entities
 
 /**
  * Sorting values belonging to a restaurant based on the provided example json data
- * @author Jaspervl
  */
 data class SortingValues(
     val bestMatch: Float,

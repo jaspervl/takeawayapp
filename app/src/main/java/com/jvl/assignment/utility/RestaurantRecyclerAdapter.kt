@@ -15,7 +15,6 @@ import com.jvl.assignment.viewmodels.RestaurantViewModel
 
 /**
  * RecyclerView (List) adapter which displays the restaurant items
- * @author Jaspervl
  */
 class RestaurantRecyclerAdapter constructor(private val viewmodel: RestaurantViewModel) :
     ListAdapter<Restaurant, RestaurantRecyclerAdapter.RestaurantViewHolder>(callback) {
@@ -34,6 +33,7 @@ class RestaurantRecyclerAdapter constructor(private val viewmodel: RestaurantVie
 
         fun bind(item: Restaurant) {
             binding.restaurant = item
+            binding.values = item.sortingValues
             binding.favButton.setOnClickListener {
                 viewmodel.toggleFavorite(item)
             }

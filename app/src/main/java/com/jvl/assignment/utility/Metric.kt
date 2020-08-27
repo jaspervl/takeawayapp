@@ -2,7 +2,6 @@ package com.jvl.assignment.utility
 
 /**
  *   All available filter metrics the application needs to support
- *   @author Jaspervl
  */
 enum class Metric {
     BEST_MATCH, NEWEST, RATING_AVERAGE,

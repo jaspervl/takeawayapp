@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.Flow
 
 /**
  * Restaurant dao with all possible queries and database operation for the time being
- * @author Jaspervl
  */
 @Dao
 interface RestaurantDao {

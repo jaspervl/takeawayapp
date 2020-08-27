@@ -7,7 +7,6 @@ import com.jvl.assignment.model.entities.SortingValues
 
 /**
  * Entity representing a restaurant from the provided testdata
- * @author Jaspervl
  */
 @Entity
 data class Restaurant(

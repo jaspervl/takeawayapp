@@ -6,7 +6,6 @@ import com.jvl.assignment.R
 
 /**
  * This application will only be run with a single activity as it relies on the new navigation component
- * @author Jaspervl
  */
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

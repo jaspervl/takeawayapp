@@ -24,25 +24,10 @@ import kotlin.concurrent.schedule
 
 /**
  * Main screen on which the restaurants are displayed and the corresponding filter/search options
- * @author Jaspervl
  */
 class RestaurantFragment : Fragment() {
 
     private val restaurantViewModel: RestaurantViewModel by activityViewModels()
-
-    /** FIXME When the application loads in for the first time, the initial live data doesn't
-     * detect the new entries until a new query is made or the elements change through an outside
-     * source (I verified this with the database inspector).
-     *
-     *  Calling the first query with a delay like so works, but it is a very ugly & hacky
-     *  solution and would introduce a racing condition:
-     *
-     *       lifecycleScope.launchWhenCreated {
-     *           Timer().schedule(2000) {
-     *               restaurantViewModel.query.postValue("")
-     *       }}
-     *
-     **/
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
