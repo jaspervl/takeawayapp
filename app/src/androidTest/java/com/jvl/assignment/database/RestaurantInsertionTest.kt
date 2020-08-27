@@ -40,8 +40,8 @@ class RestaurantInsertionTest {
     private lateinit var database: RestaurantDatabase
     private lateinit var restaurantDao: RestaurantDao
 
-//
-    private var sortedDummyRestaurants = RestaurantUtil.generateRestaurants(20)
+    private val restaurantCount = 20
+    private var sortedDummyRestaurants = RestaurantUtil.generateRestaurants(restaurantCount)
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -63,7 +63,19 @@ class RestaurantInsertionTest {
     @Test
     fun testRetrieval() = runBlocking{
         val restaurants = restaurantDao.retrieveAll("").getValueDelayed(2)
-        assertTrue("Retrieval failed, expected ",restaurants.size == 18)
+        assertTrue("Retrieval failed, restaurant size was ${restaurants.size}",restaurants.size == restaurantCount)
+    }
+
+    @Test
+    fun testFavorite() = runBlocking {
+        val liveRestaurants = restaurantDao.retrieveAll("")
+        val firstRestaurantBefore = liveRestaurants.getValueDelayed(2).first()
+        assertTrue("Restaurant was already favorited", !firstRestaurantBefore.favorite)
+        firstRestaurantBefore.favorite = true
+        restaurantDao.update(firstRestaurantBefore)
+
+        val firstRestaurantAfter = liveRestaurants.getValueDelayed(2).first()
+        assertTrue("Live data didn't update restaurant", firstRestaurantAfter.favorite)
     }
 
 }

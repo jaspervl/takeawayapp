@@ -19,7 +19,8 @@ import org.junit.Before
 /**
  * Initialize the database and verify whether the repository can provide the viewmodel with data:
  * - Test went successful
- * - Database is filled with more then 1 entry of restaurants
+ * - Database is fil+
+ * led with more then 1 entry of restaurants
  * - ..
  */
 @RunWith(AndroidJUnit4::class)

@@ -12,12 +12,12 @@
     <string name="no_results">Seems we can\'t find any restaurants</string>
 
     <!-- Formatted string templates -->
-    <string name="formatted_best_match" translatable="false">Best match (%1$.2f)</string>
-    <string name="formatted_newest" translatable="false">Newest (%1$.1f)</string>
-    <string name="formatted_rating_average" translatable="false">Av.rating (%1$.1f)</string>
-    <string name="formatted_distance" translatable="false">Distance (%d)</string>
-    <string name="formatted_popularity" translatable="false">Popularity (%1$.1f)</string>
-    <string name="formatted_product_average" translatable="false">PP. average (%d)</string>
-    <string name="formatted_delivery_cost" translatable="false">Delivery (%d)</string>
-    <string name="formatted_min_cost" translatable="false">Min c. (%d)</string>
+    <string name="formatted_best_match">Best match (%1$.2f)</string>
+    <string name="formatted_newest">Newest (%1$.1f)</string>
+    <string name="formatted_rating_average">Av.rating (%1$.1f)</string>
+    <string name="formatted_distance">Distance (%d)</string>
+    <string name="formatted_popularity">Popularity (%1$.1f)</string>
+    <string name="formatted_product_average">PP. average (%d)</string>
+    <string name="formatted_delivery_cost">Delivery (%d)</string>
+    <string name="formatted_min_cost">Min c. (%d)</string>
 </resources>

@@ -11,4 +11,14 @@
     <string name="best_match">Beste match</string>
     <string name="reset">Reset</string>
     <string name="no_results">Geen restauranten gevonden</string>
+
+    <!-- Formatted string templates -->
+    <string name="formatted_best_match">Best match (%1$.2f)</string>
+    <string name="formatted_newest" >Nieuw (%1$.1f)</string>
+    <string name="formatted_rating_average">Gem. rating (%1$.1f)</string>
+    <string name="formatted_distance" >Afstand (%d)</string>
+    <string name="formatted_popularity">Populariteit (%1$.1f)</string>
+    <string name="formatted_product_average">PP. gemiddeld (%d)</string>
+    <string name="formatted_delivery_cost">Bezorgkosten (%d)</string>
+    <string name="formatted_min_cost">Minimum kosten (%d)</string>
 </resources>

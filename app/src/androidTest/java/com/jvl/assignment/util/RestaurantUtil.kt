@@ -25,7 +25,7 @@ class RestaurantUtil {
             return Restaurant(
                 name = UUID.randomUUID().toString(),
                 status = statusOptions.random(),
-                sortingValues = if(sortingValue != -1) generateRandomSortingValues() else generateSortingValues(sortingValue)
+                sortingValues = if(sortingValue == -1) generateRandomSortingValues() else generateSortingValues(sortingValue)
             )
         }
 
