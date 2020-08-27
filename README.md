@@ -27,6 +27,25 @@ their current openings state and current selected sort.
 - Readme file with all the needed information, how to get the sample project working
 and verify the test cases.
 
-## Implementation
+## Design
 
-The architecture is based on the mvvm architecture. Most of the design decisions are based on similar examples by Google (docs, sample apps like sunflower..).
+The architecture is based on the mvvm architecture. Most of the design decisions are based on similar examples by Google (docs, sample apps like sunflower..) and the official android docs (https://developer.android.com/jetpack/guide)
+
+Upon starting the application a worker will load in the example restaurant data. In the main screen, there are several filter chips to sort between the different types of metrics (best_match, average price..) and search based on the name of the restaurant. Additionally, a user can favorite a restaurant in which case it'll appear on top based on the defined sorting priority of the assignment. 
+
+In the viewmodel, a mediatorlivedata is used to observe two other livedatas (RoomQuery livedata or a change in metric). In the fragment, the mediatorLiveData is observed for changes to refresh the ListAdapter.
+
+If no items can be loaded a button with a reset will appear instead which changes the query to trigger a new livedata to be retrieved.
+
+## Setup
+
+This application was tested & debugged using Android Studio 4.2 Canary build
+
+To install it, clone this repository locally and import the project in android studio.
+Following that, use the android studio emulator or a local device to build & run the application
+
+## Known issues
+- There is an issue with loading data for the first time when running the application. To alleviate this, click on the reset button that will appear in the center of the recyclerview area. After spending quite a long time on debugging this issue, I opted to let it be for now since I couldn't quite figure out why it didn't automatically detect the new entries in the database. Externally, I used the database inspector to trigger a change in the database which seemed to work fine.
+
+## Testing
+I've added a limited set of test to the application which checks the worker and the sorting used.
